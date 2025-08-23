@@ -1,35 +1,20 @@
 """
-Módulo contendo algoritmos de busca e análise de grafos.
-
-Implementa DFS para cálculo de fecho transitivo e verificação de conectividade
-conforme especificações do trabalho.
+Implementação seguindo EXATAMENTE o enunciado do professor.
 """
 
 class AlgoritmosGrafo:
-    """
-    Classe contendo algoritmos para análise de grafos.
-    """
+    """Algoritmos para verificação de conectividade conforme especificação."""
     
     @staticmethod
     def dfs_fecho_transitivo(grafo, vertice_inicial):
         """
-        Computa o fecho transitivo usando busca em profundidade.
-        
-        Args:
-            grafo (Grafo): Grafo para análise
-            vertice_inicial: Vértice de partida
-            
-        Returns:
-            set: Conjunto de vértices alcançáveis
-            
-        Complexidade: O(V + E)
+        Computa o fecho transitivo usando DFS.
+        Segue exatamente o passo 2 (não orientado) e passo 3 (orientado).
         """
         visitados = set()
         
         def dfs_recursiva(vertice):
-            """Função auxiliar recursiva para DFS."""
             visitados.add(vertice)
-            
             for vizinho in grafo.obter_vizinhos(vertice):
                 if vizinho not in visitados:
                     dfs_recursiva(vizinho)
@@ -38,33 +23,35 @@ class AlgoritmosGrafo:
         return visitados
     
     @staticmethod
-    def verificar_conectividade(grafo, tipo="nao_orientado"):
+    def verificar_conectividade(grafo, tipo):
         """
-        Verifica se um grafo é conexo.
+        Verifica conectividade seguindo EXATAMENTE o enunciado:
         
-        Args:
-            grafo (Grafo): Grafo para análise
-            tipo (str): "orientado" ou "nao_orientado"
-            
-        Returns:
-            bool: True se conexo, False caso contrário
-            
-        Complexidade: 
-            - Não orientado: O(V + E)
-            - Orientado: O(V + E) após simetrização
+        CASO NÃO ORIENTADO:
+        1. Construir lista de adjacência ✓ (já feito)
+        2. Computar fecho transitivo de um vértice
+        3. Se fecho == X → conexo, senão desconexo
+        
+        CASO ORIENTADO:
+        1. Simetrizar o grafo
+        2. Construir lista de sucessores ✓ (já feito)
+        3. Computar fecho transitivo de um vértice  
+        4. Se fecho == X → conexo, senão desconexo
         """
         if not grafo.vertices:
             return True
         
-        # Para grafo orientado, precisa simetrizar
+        # PASSO ESPECÍFICO PARA ORIENTADO: Simetrizar
         if tipo == "orientado":
             grafo.simetrizar()
         
-        # Escolhe um vértice inicial
-        vertice_inicial = next(iter(grafo.vertices))
+        # Escolhe um vértice qualquer
+        vertice_escolhido = next(iter(grafo.vertices))
         
         # Computa fecho transitivo
-        fecho = AlgoritmosGrafo.dfs_fecho_transitivo(grafo, vertice_inicial)
+        fecho_transitivo = AlgoritmosGrafo.dfs_fecho_transitivo(grafo, vertice_escolhido)
         
-        # Verifica se todos os vértices foram alcançados
-        return fecho == grafo.vertices
+        # Verifica se fecho == X
+        eh_conexo = fecho_transitivo == grafo.vertices
+        
+        return eh_conexo, fecho_transitivo, vertice_escolhido

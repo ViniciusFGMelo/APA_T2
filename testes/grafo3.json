@@ -1,9 +1,0 @@
-{
-  "nome": "Grafo conexo simples",
-  "tipo": "nao_orientado",
-  "vertices": ["A", "B", "C"],
-  "ligacoes": [
-    ["A", "B"], 
-    ["B", "C"]
-  ]
-}

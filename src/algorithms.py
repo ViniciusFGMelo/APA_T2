@@ -39,7 +39,7 @@ class AlgoritmosGrafo:
         4. Se fecho == X → conexo, senão desconexo
         """
         if not grafo.vertices:
-            return True
+            return False, set(), None
         
         # PASSO ESPECÍFICO PARA ORIENTADO: Simetrizar
         if tipo == "orientado":

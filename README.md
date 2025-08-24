@@ -43,8 +43,21 @@ https://gamma.app/docs/Analise-e-Projeto-de-Algoritmos-Trabalho-2-8w8w9jnp6dasq0
 ## Como Executar
 
 ### 1. Executar o programa:
+Executar a primeira parte
 ```bash
 python3 main.py
+```
+```powershell/cmd
+python main.py
+```
+Executar a segunda parte
+```bash
+python3 llm.py testes/grafo1.json
+python3 llm.py testes/grafo2.json
+```
+```powershell/cmd
+python llm.py testes/grafo1.json
+python llm.py testes/grafo2.json
 ```
 
 ### 2. Adicionar novos testes:

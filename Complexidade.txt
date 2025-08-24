@@ -1,0 +1,21 @@
+Comparação entre as complexidades das implementações (Desenvolvida e LLM)
+
+Desenvolvida (src -> algorithms.py e graph.py)
+
+Construção da lista de adjacência: O(V+E)
+Busca em profundidade (DFS) para calcular o fecho transitivo: O(V+E)
+Verificação de conectividade - fecho: O(1)
+Complexidade total: O(V+E)
+Espaço total: O(V+E)
+
+LLM - ChatGPT (llm.py)
+
+Construção da lista de adjacência: O(V+E)
+Busca em profundidade (DFS) para calcular o fecho transitivo: O(V+E)
+Verificação de conectividade - fecho: O(1)
+Complexidade total: O(V+E)
+Espaço total: O(V+E)
+
+Conclusão: As duas implementações tem a mesma complexidade, porque ambas utilizam lista de adjacência + DFS.
+
+A diferença não está no custo, mas no estilo de implementação (a nossa sendo mais enxuta e controlada; a do LLM sendo mais genérica e verbosa).

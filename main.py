@@ -1,7 +1,3 @@
-"""
-Implementação simples seguindo EXATAMENTE o enunciado do professor.
-"""
-
 import json
 import time
 from src.graph import Grafo
@@ -17,7 +13,6 @@ ARQUIVOS_TESTE = [
 
 
 def carregar_grafo_json(nome_arquivo):
-    """Carrega grafo de arquivo JSON."""
     try:
         with open(f"testes/{nome_arquivo}", 'r', encoding='utf-8') as arquivo:
             dados = json.load(arquivo)
@@ -33,7 +28,6 @@ def carregar_grafo_json(nome_arquivo):
 
 
 def executar_teste(dados):
-    """Executa teste seguindo exatamente o enunciado do professor."""
     vertices = dados['vertices']
     ligacoes = dados['ligacoes']
     tipo = dados['tipo']
@@ -41,8 +35,7 @@ def executar_teste(dados):
     print(f"{dados['nome']}")
     print(f" Tipo: {tipo}")
 
-    eh_orientado = (tipo == "orientado")
-    grafo = Grafo(eh_orientado=eh_orientado)
+    grafo = Grafo(eh_orientado=(tipo == "orientado"))
     grafo.construir_de_listas(vertices, ligacoes)
 
     if tipo == "orientado":
@@ -70,7 +63,6 @@ def executar_teste(dados):
 
 
 def main():
-    """Função principal."""
     print("TRABALHO DE ANÁLISE E PROJETO DE ALGORITMOS")
     print("Verificação de Conectividade em Grafos")
     print("=" * 60)

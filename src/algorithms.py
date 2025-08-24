@@ -6,7 +6,7 @@ class AlgoritmosGrafo:
     """Algoritmos para verificação de conectividade conforme especificação."""
     
     @staticmethod
-    def dfs_fecho_transitivo(grafo, vertice_inicial):
+    def dfs_fecho_transitivo(grafo, pivo):
         """
         Computa o fecho transitivo usando DFS.
         Segue exatamente o passo 2 (não orientado) e passo 3 (orientado).
@@ -19,7 +19,7 @@ class AlgoritmosGrafo:
                 if vizinho not in visitados:
                     dfs_recursiva(vizinho)
         
-        dfs_recursiva(vertice_inicial)
+        dfs_recursiva(pivo)
         return visitados
     
     @staticmethod
@@ -45,13 +45,13 @@ class AlgoritmosGrafo:
         if tipo == "orientado":
             grafo.simetrizar()
         
-        # Escolhe um vértice qualquer
-        vertice_escolhido = next(iter(grafo.vertices))
+        # Escolhe um vértice qualquer como pivô
+        pivo = next(iter(grafo.vertices))
         
-        # Computa fecho transitivo
-        fecho_transitivo = AlgoritmosGrafo.dfs_fecho_transitivo(grafo, vertice_escolhido)
+        # Computa fecho transitivo a partir do pivô
+        fecho_transitivo = AlgoritmosGrafo.dfs_fecho_transitivo(grafo, pivo)
         
         # Verifica se fecho == X
         eh_conexo = fecho_transitivo == grafo.vertices
         
-        return eh_conexo, fecho_transitivo, vertice_escolhido
+        return eh_conexo, fecho_transitivo, pivo

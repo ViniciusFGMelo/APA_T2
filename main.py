@@ -49,7 +49,7 @@ def executar_teste(dados):
         print(f"Arcos originais: {ligacoes}")
 
     inicio = time.perf_counter()
-    eh_conexo, fecho_transitivo, vertice_escolhido = AlgoritmosGrafo.verificar_conectividade(
+    eh_conexo, fecho_transitivo, pivo = AlgoritmosGrafo.verificar_conectividade(
         grafo, tipo)
     fim = time.perf_counter()
     tempo_execucao = fim - inicio
@@ -60,7 +60,7 @@ def executar_teste(dados):
     print(f"\n=== RESULTADO ===")
     print(f"Vértices (X): {vertices}")
     print(f"{'Arcos' if tipo == 'orientado' else 'Arestas'}: {ligacoes}")
-    print(f"Vértice escolhido para DFS: {vertice_escolhido}")
+    print(f"Pivô escolhido para DFS: {pivo}")
     print(f"Fecho transitivo: {fecho_transitivo}")
     print(f"Fecho == X? {eh_conexo}")
     print(f"Resultado: O grafo é {'CONEXO' if eh_conexo else 'DESCONEXO'}")

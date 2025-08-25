@@ -18,4 +18,4 @@ Espaço total: O(V+E)
 
 Conclusão: As duas implementações tem a mesma complexidade, porque ambas utilizam lista de adjacência + DFS.
 
-A diferença não está no custo, mas no estilo de implementação (a nossa sendo mais enxuta e controlada; a do LLM sendo mais genérica e verbosa).
+A diferença não está no custo, mas no estilo de implementação (a nossa sendo mais enxuta e controlada, aproveitando a estrutura do grafo já construída; a do LLM sendo mais genérica e verbosa, reconstruindo a lista sempre que necessário).

@@ -65,14 +65,13 @@ def executar_teste(dados):
 def main():
     print("TRABALHO DE ANÁLISE E PROJETO DE ALGORITMOS")
     print("Verificação de Conectividade em Grafos")
-    print("=" * 60)
 
     resultados = []
 
     for i, arquivo in enumerate(ARQUIVOS_TESTE, 1):
-        print(f"\nTESTE {i}")
+        print("\n" + "-"*50)
+        print(f"TESTE {i}")
         print(f"Arquivo: {arquivo}")
-        print("-" * 40)
 
         dados = carregar_grafo_json(arquivo)
         if dados is None:
@@ -81,10 +80,9 @@ def main():
 
         resultado, tempo_execucao = executar_teste(dados)
         resultados.append((resultado, tempo_execucao))
-        print("=" * 60)
 
-    print(f"\n RESUMO")
-    print("=" * 60)
+    print("\n" + "-"*50)
+    print(f"RESUMO")
     for i, (arquivo, (resultado, tempo_execucao)) in enumerate(zip(ARQUIVOS_TESTE, resultados), 1):
         status = " CONEXO" if resultado else " DESCONEXO"
         print(
